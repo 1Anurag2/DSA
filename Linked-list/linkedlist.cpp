@@ -32,6 +32,80 @@ class linkedlist{
             }
         }
 
+        void pop_front(){
+            Node* temp = head;
+            if(head == NULL){
+                cout<<"Linkedlist is Empty"<<endl;
+                return ;
+            }else{
+                head = head ->next;
+                temp->next = NULL;
+                delete temp;
+            }
+        }
+
+        void pop_back(){
+            Node* temp = head;
+            if(head == NULL){
+                cout<<"Linkedlist is Empty"<<endl;
+                return ;
+            }
+            while(temp->next != tail){
+                temp = temp ->next;
+            }
+            temp ->next = NULL;
+            delete tail;
+            tail = temp;
+        }
+
+        void push_back(int val){
+            Node* new_node = new Node(val);
+            if(head == NULL){
+                head = tail = new_node;
+            }else{
+                tail->next = new_node;
+                tail = new_node;
+            }
+        }
+
+
+        void insert(int val , int pos){
+            if(pos < 0){
+                cout<<"Invalid Position"<<endl;
+                return;
+            }
+
+            if(pos == 0){
+                push_front(val);
+                return;
+            }
+            Node* new_node = new Node(val);
+            Node* temp = head;
+            for(int i=0 ; i<pos-1;i++){
+                if(temp == NULL){
+                    cout<<"Invalid postion"<<endl;
+                    return;
+                }
+                temp = temp->next;
+            }
+            new_node->next = temp->next;
+            temp->next = new_node;
+        }
+
+        int search(int key){
+            Node* temp = head;
+            int index = 0;
+            while(temp != NULL){
+                if(temp->data == key){
+                    return index;
+                }
+                temp = temp->next;
+                index++;
+            }
+            return -1;
+        }
+
+
         void print(){
             Node* temp = head;
             while(temp != NULL){
@@ -43,10 +117,20 @@ class linkedlist{
 };
 int main(){
     linkedlist ll;
-    ll.push_front(1);
-    ll.push_front(3);
-    ll.push_front(5); 
+    // ll.push_front(1);
+    // ll.push_front(3);
+    // ll.push_front(5); 
+
+    ll.push_back(1);
+    ll.push_back(2);
+    ll.push_back(3);
+    ll.push_back(4);
+    ll.push_back(5);
+    ll.insert(8,0);
+    // ll.pop_front();
+    // ll.pop_back();
     ll.print();
+    cout<<ll.search(3);
     return 0;
 }
 
