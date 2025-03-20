@@ -65,4 +65,5 @@ g.add_vertex_edge(6,2)
 
 g.print_graph()
 
+print("\nDepth First Search starting from vertex D:")
 g.dfs('D')
