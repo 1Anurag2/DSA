@@ -1,30 +1,47 @@
-#include <iostream>
-#include <vector>
-using namespace std;
-
+//Optimal solution   
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
         int n = nums.size();
-        for(int element : nums){
-            int freq = 0;
-            for(int value : nums){
-                if(value == element){
-                    freq++;
-                }
+        sort(nums.begin(),nums.end());
+        int freq = 1 , ans = nums[0];
+        for(int i = 1; i<n ; i++){
+            if(nums[i] == nums[i-1]){
+                freq++;
+            }else{
+                freq = 1;
+                ans = nums[i];
             }
-            if(freq > n/2){
-                return element;
-            }
+        if(freq > n/2){
+            return ans;
         }
-        return -1; // Will never be reached if majority element is guaranteed
+        }
+        return ans;
     }
 };
 
-int main() {
-    Solution solution;
-    vector<int> nums = {3, 2, 3};
-    int result = solution.majorityElement(nums);
-    cout << "Majority Element: " << result << endl;
-    return 0;
-}
+
+
+
+
+//Bruteforce approch time complexity = O(n^2)
+
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+//         int n = nums.size();
+//         for(int element : nums){
+//             int freq = 0;
+//             for(int value : nums){
+//                 if(value == element){
+//                     freq++;
+//                 }
+//             }
+//             if(freq > n/2){
+//                 return element;
+//             }
+//         }
+//         return -1;
+//     }
+// };
+
