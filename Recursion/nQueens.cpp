@@ -52,15 +52,18 @@ public:
 };
 
 int main() {
-    int n = 4;
+    int n = 3;
     Solution obj;
     vector<vector<string>> result = obj.solveNQueens(n);
-
-    for (auto& solution : result) {
-        for (string row : solution) {
-            cout << row << endl;
+    if(!result.empty()){
+        for (auto& solution : result) {
+            for (string row : solution) {
+                cout << row << endl;
+            }
+            cout << endl;
         }
-        cout << endl;
+    }else{
+        cout<<"No Solution Find .";
     }
 
     return 0;
