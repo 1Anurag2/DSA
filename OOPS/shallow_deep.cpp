@@ -25,6 +25,11 @@ class Student{
             *cgpaptr = *obj.cgpaptr; // Deep copy of the pointer
         }
 
+        ~Student(){
+            cout<<"hi , I am deleting everything except dynamic memory "<<name<<endl;
+            delete cgpaptr; // Free the dynamically allocated memory
+        }
+
         void getinfo(){
             cout<<"Name: "<<name<<", CGPA: "<<*cgpaptr<<endl;
         }
@@ -32,9 +37,9 @@ class Student{
 int main(){
     Student s1("Anurag", 8.9);
     s1.getinfo();
-    Student s2(s1); 
-    *(s2.cgpaptr) = 9.5;
+    // Student s2(s1); 
+    // *(s2.cgpaptr) = 9.5;
     s1.getinfo(); 
-    s2.getinfo(); // This will show that s1's CGPA is unchanged due to deep copy
+    // s2.getinfo(); // This will show that s1's CGPA is unchanged due to deep copy
     return 0;
 }
