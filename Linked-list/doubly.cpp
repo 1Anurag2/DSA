@@ -87,6 +87,47 @@ public:
             delete temp;
         }
     }
+
+    void insert(int val , int pos){
+        if(pos < 0){
+            cout<<"Invalid position"<<endl;
+            return;
+        }
+        if(pos == 0){
+            push_front(val);
+            return;
+        }
+        Node *newNode = new Node(val);
+        Node *temp = head;
+        for(int i =0 ; i<pos-1 && temp != NULL; i++){
+            temp = temp->next;
+        }
+        if(temp == NULL){
+            cout<<"Position out of bounds"<<endl;
+            delete newNode;
+            return;
+        }
+        newNode->next = temp->next;
+        newNode->prev = temp;
+        if(temp->next != NULL){
+            temp->next->prev = newNode;
+        }
+        temp->next = newNode;
+    }
+
+    void search(int val){
+        int pos = 0;
+        Node* temp = head;
+        while(temp != NULL){
+            if(temp->data == val){
+                cout<<"Element "<<val<<" found at position "<<pos<<endl;
+                return;
+            }
+            temp = temp->next;
+            pos++;
+        }
+        cout<<"Element not found"<<endl;
+    }
     void printLL()
     {
         Node *temp = head;
@@ -121,5 +162,10 @@ int main()
 
     dl.pop_back();
     dl.printLL();
+
+    dl.insert(10, 2);
+    dl.printLL();
+
+    dl.search(3);
     return 0;
 }
