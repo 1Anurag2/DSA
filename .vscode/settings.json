@@ -1,6 +1,6 @@
 {
   "editor.acceptSuggestionOnEnter": "on",
-  "C_Cpp_Runner.msvcBatchPath": "",
+  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/VR_NR/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "editor.inlineSuggest.suppressSuggestions": true,
   "editor.quickSuggestions": {
     "comments": "on"
@@ -63,5 +63,10 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "*.embeddedhtml": "html",
+    "*.ejs": "html",
+    "iostream": "cpp"
+  }
 }
